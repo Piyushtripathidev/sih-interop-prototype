@@ -1,0 +1,25 @@
+{
+  "name": "sih-interop-prototype",
+  "version": "2.1.0",
+  "private": true,
+  "description": "setu Interoperability Hub - SIH 2026 prototype (DigiLocker + Income verification)",
+  "main": "main/server.js",
+  "scripts": {
+    "start": "concurrently -n DIGI,INCOME,MAIN -c blue,green,yellow \"node servers/digilocker.js\" \"node servers/income.js\" \"node main/server.js\"",
+    "digilocker": "node servers/digilocker.js",
+    "income": "node servers/income.js",
+    "main": "node main/server.js",
+    "prod": "node allinone.js"
+  },
+  "dependencies": {
+    "concurrently": "^9.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": ["sih", "interop", "digilocker", "income"],
+  "author": "SIH Team",
+  "license": "MIT"
+}

@@ -1,0 +1,125 @@
+:root{
+  --blue:#0b3d91; --blue2:#1e4fc2; --ink:#10243e; --muted:#5b6b84;
+  --bg:#f2f5fb; --line:#e3eaf6; --green:#067647; --red:#b42318; --amber:#b54708;
+  --radius:16px; --shadow:0 10px 30px rgba(16,36,62,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',system-ui,-apple-system,Arial,sans-serif}
+body{background:linear-gradient(180deg,#f7f9fe 0%,#eef2f9 100%);color:var(--ink);min-height:100vh;display:flex;flex-direction:column}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.topbar{background:linear-gradient(135deg,#0a2f6f 0%,#1554c0 70%,#1e63d6 100%);color:#fff;padding:16px 28px;display:flex;justify-content:space-between;align-items:center;gap:16px;box-shadow:0 4px 18px rgba(10,47,111,.25)}
+.brand{display:flex;align-items:center;gap:14px}
+.brand-logo{width:46px;height:46px;border-radius:14px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);display:grid;place-items:center;font-size:24px}
+.topbar h1{font-size:22px;letter-spacing:.2px}
+.topbar h1 span{font-weight:400;color:#cfe0ff}
+.topbar p{color:#bcd3ff;font-size:12.5px;margin-top:2px}
+.tricolor{height:4px;background:linear-gradient(90deg,#ff9933 0 33.3%,#ffffff 33.3% 66.6%,#138808 66.6% 100%)}
+
+.container{padding:24px;max-width:1180px;margin:0 auto;width:100%;flex:1}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);margin-bottom:18px;animation:fadeUp .35s ease}
+.hidden{display:none}
+.muted{color:var(--muted);font-size:13px}
+.error{color:var(--red);margin-top:12px;font-weight:600}
+
+.login-card{padding:0;overflow:hidden;display:grid;grid-template-columns:1.05fr 1fr}
+.login-hero{background:linear-gradient(160deg,#0b3d91 0%,#1e4fc2 55%,#2f6de0 100%);color:#fff;padding:34px 32px}
+.login-hero h2{font-size:26px;line-height:1.25;margin-bottom:12px}
+.login-hero p{color:#d6e4ff;font-size:14px;line-height:1.6}
+.hero-points{margin-top:22px;display:grid;gap:14px}
+.hero-point{display:flex;gap:12px;align-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:10px 14px}
+.hero-point span{font-size:20px;width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.14);display:grid;place-items:center;flex:none}
+.hero-point small{color:#cfe0ff}
+.login-body{padding:30px 28px}
+.login-body h3{margin-bottom:6px;font-size:19px}
+
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}
+label{display:flex;flex-direction:column;gap:6px;font-size:12.5px;font-weight:700;color:#33415c;letter-spacing:.2px}
+input,select{padding:11px 12px;border:1.5px solid #d7e0f0;border-radius:10px;font-size:14px;background:#fbfcff;transition:.15s}
+input:focus,select:focus{outline:none;border-color:var(--blue2);box-shadow:0 0 0 4px rgba(30,79,194,.12)}
+.btn{border:1.5px solid var(--blue);background:#fff;color:var(--blue);padding:10px 16px;border-radius:10px;cursor:pointer;font-weight:700;font-size:14px;transition:.15s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(11,61,145,.18)}
+.btn.primary{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;border:none;box-shadow:0 6px 18px rgba(21,84,192,.35)}
+.btn.small{padding:6px 10px;font-size:13px;border-radius:8px}
+.btn.ghost{border-color:#cdd8ea;color:#475467}
+.btn-group{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.quick-login{margin-top:22px;border-top:1px dashed #d9e2f2;padding-top:16px}
+.quick-login h4{font-size:14px;color:#33415c;margin-bottom:4px}
+
+.tabs{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.tabs button{border:1.5px solid #d7e0f0;background:#fff;color:#33415c;padding:10px 18px;border-radius:999px;cursor:pointer;font-weight:700;font-size:13.5px;transition:.15s}
+.tabs button:hover{border-color:var(--blue2);color:var(--blue2)}
+.tabs button.active{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;border-color:transparent;box-shadow:0 6px 16px rgba(21,84,192,.3)}
+
+table{width:100%;border-collapse:collapse;margin-top:12px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th,td{padding:10px 12px;text-align:left;font-size:13px;vertical-align:top;border-bottom:1px solid var(--line)}
+th{background:#f0f5ff;color:#1e3a6e;font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+tbody tr:nth-child(even){background:#fafcff}
+tbody tr:hover{background:#f2f7ff}
+
+.badge{display:inline-block;padding:5px 11px;border-radius:999px;font-size:11.5px;font-weight:800;letter-spacing:.3px}
+.badge.green{background:#e8f7ef;color:var(--green)}
+.badge.red{background:#fdecec;color:var(--red)}
+.badge.yellow{background:#fff7e0;color:var(--amber)}
+.badge.blue{background:#eaf2ff;color:#175cd3}
+.badge.gray{background:#f2f4f7;color:#475467}
+.score-bar{height:10px;background:#e6ecf6;border-radius:999px;overflow:hidden;margin-top:6px}
+.score-fill{height:100%;border-radius:999px;transition:width .6s ease}
+
+.service-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:14px;margin-top:14px}
+.service-card{border:1px solid var(--line);border-radius:14px;padding:18px;background:linear-gradient(180deg,#ffffff,#fafcff);display:flex;flex-direction:column;gap:8px;transition:.15s}
+.service-card:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(16,36,62,.12);border-color:#c9d8f2}
+.service-card .icon{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#e8f0fe,#d9e6ff);font-size:26px}
+.service-card h3{font-size:15.5px}
+.service-card .btn{margin-top:auto}
+.metric-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:14px}
+.metric-card{background:linear-gradient(180deg,#fbfdff,#f4f8ff);border:1px solid #d9e5fb;border-radius:14px;padding:16px;position:relative;overflow:hidden}
+.metric-card::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:linear-gradient(180deg,var(--blue2),#6ea8ff)}
+.metric-card h3{font-size:27px;margin-bottom:5px;color:#123a7a}
+
+.timeline{margin-top:16px;padding-left:18px}
+.timeline-item{border-left:3px solid #c9d8f2;padding:0 0 16px 16px;position:relative}
+.timeline-item::before{content:"";width:11px;height:11px;background:linear-gradient(135deg,var(--blue),var(--blue2));border-radius:50%;position:absolute;left:-7px;top:4px;box-shadow:0 0 0 4px rgba(30,79,194,.15)}
+.notice{margin-top:12px;padding:14px 16px;border-radius:12px;background:#f4f8ff;border:1px solid #d9e5fb}
+.consent-row{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:14px;font-weight:600}
+
+.toast{position:fixed;right:18px;bottom:18px;background:#0b3d91;color:#fff;padding:14px 18px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.3);font-size:13.5px;max-width:320px;opacity:0;transform:translateY(12px);transition:.35s;z-index:99}
+.toast.show{opacity:1;transform:none}
+.certificate{margin-top:14px;border:2px solid #067647;border-radius:12px;padding:14px 16px;background:linear-gradient(180deg,#f4fbf7,#e8f7ef)}
+.cert-head{font-weight:800;color:#067647;letter-spacing:.4px;margin-bottom:6px}
+
+.footer{padding:16px;text-align:center;color:#8494ab;font-size:12px}
+
+@media(max-width:900px){
+  .login-card{grid-template-columns:1fr}
+  .topbar{flex-direction:column;align-items:flex-start}
+}
+
+/* ---------- Mobile responsiveness ---------- */
+@media(max-width:768px){
+  .container{padding:14px}
+  .topbar{padding:12px 16px}
+  .topbar h1{font-size:18px}
+  .brand-logo{width:38px;height:38px;font-size:20px}
+  .card{padding:16px;border-radius:12px}
+  .login-hero{padding:22px 18px}
+  .login-hero h2{font-size:20px}
+  .login-body{padding:20px 16px}
+  .form-grid{grid-template-columns:1fr}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+  .tabs button{flex:none;padding:9px 14px;font-size:12.5px}
+  table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;white-space:nowrap;border-radius:10px}
+  th,td{font-size:12px;padding:8px 10px}
+  .metric-grid{grid-template-columns:repeat(2,1fr)}
+  .metric-card h3{font-size:22px}
+  .service-grid{grid-template-columns:repeat(2,1fr)}
+  .btn{padding:10px 12px;font-size:13px}
+  .btn-group{gap:8px}
+  .toast{left:12px;right:12px;max-width:none;bottom:12px}
+  .certificate p{font-size:12.5px}
+  h2{font-size:20px}
+}
+@media(max-width:480px){
+  .service-grid{grid-template-columns:1fr}
+  .hero-point{padding:8px 10px}
+  .hero-point span{width:34px;height:34px;font-size:17px}
+}
