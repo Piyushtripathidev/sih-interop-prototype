@@ -11,7 +11,7 @@
 ![Status](https://img.shields.io/badge/Status-Prototype-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-**🌐 Live Demo:** `[YOUR RENDER URL]` *(free tier — first load may take ~30 s)*
+**🌐 Live Demo:** "(https://setu-hub.onrender.com)"
 **📱 Mobile-ready:** fully responsive; open the live URL on any phone.
 
 ---
