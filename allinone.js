@@ -8,9 +8,13 @@ const main = require("./main/server");
 const digilocker = require("./servers/digilocker");
 const income = require("./servers/income");
 
-main.get("/digilocker", (q, s) => s.redirect("/digilocker/"));
-main.get("/income", (q, s) => s.redirect("/income/"));
+// Redirect ONLY the exact no-slash paths (middleware = exact match, no loop)
+main.use((req, res, next) => {
+  if (req.path === "/digilocker" || req.path === "/income") return res.redirect(req.path + "/");
+  next();
+});
+
 main.use("/digilocker", digilocker);
 main.use("/income", income);
 
-main.listen(port, () => console.log(`[setu ALL-IN-ONE] http://localhost:${port} · portals: /digilocker · /income`));
+main.listen(port, () => console.log(`[SETU ALL-IN-ONE] http://localhost:${port} · portals: /digilocker · /income`));
