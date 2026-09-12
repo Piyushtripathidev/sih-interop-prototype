@@ -189,7 +189,7 @@ app.get("/api/services", auth, (req, res) => res.json(services.map(({ eligibilit
 app.get("/api/proxy/digilocker/:aadhaar", auth, async (req, res) => {
   try {
     const c = connectors[0];
-    const r = await fetchWithTimeout(`${c.url}${c.prefix}/api/records/${req.params.aadhaar}`, { headers: { Accept: "application/json" } }, c.timeoutMs, { from: "setu", to: "DigiLocker", format: "JSON" });
+    const r = await fetchWithTimeout(`${c.url}${c.prefix}/api/records/${req.params.aadhaar}`, { headers: { Accept: "application/json" } }, c.timeoutMs, { from: "SETU", to: "DigiLocker", format: "JSON" });
     if (!r.ok) return res.status(r.status).json({ message: "No DigiLocker record found for this Aadhaar. Open the DigiLocker portal and copy an exact Aadhaar." });
     res.json(await r.json());
   } catch (e) { res.status(502).json({ message: "DigiLocker connector unreachable: " + e.message }); }
@@ -198,7 +198,7 @@ app.get("/api/proxy/digilocker/:aadhaar", auth, async (req, res) => {
 app.get("/api/proxy/income", auth, async (req, res) => {
   try {
     const c = connectors[1];
-    const r = await fetchWithTimeout(`${c.url}${c.prefix}/api/certificates`, {}, c.timeoutMs, { from: "setu", to: "Income Dept", format: "XML" });
+    const r = await fetchWithTimeout(`${c.url}${c.prefix}/api/certificates`, {}, c.timeoutMs, { from: "SETU", to: "Income Dept", format: "XML" });
     if (!r.ok) return res.status(r.status).json({ message: "Income Department list unavailable." });
     res.json(await r.json());
   } catch (e) { res.status(502).json({ message: "Income connector unreachable: " + e.message }); }
@@ -234,7 +234,7 @@ app.post("/api/applications", auth, allow("CITIZEN"), async (req, res) => {
     let digi;
     try {
       const c = connectors[0];
-      const r = await fetchWithTimeout(`${c.url}${c.prefix}/api/records/${form.aadhaar}`, { headers: { Accept: "application/json" } }, c.timeoutMs, { from: "setu", to: "DigiLocker", format: "JSON" });
+      const r = await fetchWithTimeout(`${c.url}${c.prefix}/api/records/${form.aadhaar}`, { headers: { Accept: "application/json" } }, c.timeoutMs, { from: "SETU", to: "DigiLocker", format: "JSON" });
       if (!r.ok) throw new Error("RECORD_NOT_FOUND");
       digi = (await r.json()).payload;
       addEvent(application.id, "INTEGRATION_SUCCESS", "Fetched identity record from DigiLocker (JSON)", {});
@@ -250,7 +250,7 @@ app.post("/api/applications", auth, allow("CITIZEN"), async (req, res) => {
     let income;
     try {
       const c = connectors[1];
-      const r = await fetchWithTimeout(`${c.url}${c.prefix}/api/certificates/${form.aadhaar}`, { headers: { Accept: "application/xml" } }, c.timeoutMs, { from: "setu", to: "Income Dept", format: "XML" });
+      const r = await fetchWithTimeout(`${c.url}${c.prefix}/api/certificates/${form.aadhaar}`, { headers: { Accept: "application/xml" } }, c.timeoutMs, { from: "SETU", to: "Income Dept", format: "XML" });
       if (!r.ok) throw new Error("RECORD_NOT_FOUND");
       income = xmlLeafToJson(await r.text());
       addEvent(application.id, "INTEGRATION_SUCCESS", "Fetched income record from Income Department (XML) and normalised to standard format", {});
@@ -349,7 +349,7 @@ app.post("/api/applications/:id/decision", auth, allow("OFFICIAL", "ADMIN"), (re
 app.get("/api/admin/monitoring", auth, allow("OFFICIAL", "ADMIN"), async (req, res) => {
   const connectorHealth = await Promise.all(connectors.map(async (c) => {
     try {
-      const r = await fetchWithTimeout(`${c.url}${c.prefix}/health`, {}, 1000, { from: "setu", to: c.name, format: c.format });
+      const r = await fetchWithTimeout(`${c.url}${c.prefix}/health`, {}, 1000, { from: "SETU", to: c.name, format: c.format });
       const d = await r.json().catch(() => ({}));
       return { id: c.id, name: c.name, status: r.ok ? "UP" : "DOWN", format: c.format, records: d.records || "-" };
     } catch { return { id: c.id, name: c.name, status: "DOWN", format: c.format, records: "-" }; }

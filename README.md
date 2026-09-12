@@ -1,4 +1,4 @@
-# 🏛️ setu Interoperability Hub
+# 🏛️ SETU Interoperability Hub
 
 > **One Nation. One Portal. Every Service.**
 > A consent-based interoperability middleware that connects fragmented government systems — citizens submit data **once**, and departments verify it **automatically**.
@@ -26,7 +26,7 @@ Government departments operate multiple portals, registries and databases develo
 
 ## 💡 Our Solution
 
-**setu** sits *above* legacy silos as a federated service-delivery layer:
+**SETU** sits *above* legacy silos as a federated service-delivery layer:
 
 - 🔗 **Reusable connectors** to legacy & modern systems (JSON **and** XML)
 - 🎯 **Field-level Match Engine** scoring inter-department data consistency (0–100%)
@@ -48,7 +48,7 @@ Legacy systems are **never replaced** — they are simply connected.
  └────────────┬──────────────┘
               │
  ┌────────────▼───────────────────────────────────────────┐
- │             setu INTEROPERABILITY PLATFORM         │
+ │             SETU INTEROPERABILITY PLATFORM         │
  │  Orchestrator · Match Engine · Eligibility Rules        │
  │  RBAC · Consent Receipts · Audit · Exceptions · SSE     │
  │  Connector Health + Live Traffic Monitor                │
@@ -174,7 +174,7 @@ npm start
 
 | System | URL |
 |---|---|
-| setu Hub | http://localhost:5000 |
+| SETU Hub | http://localhost:5000 |
 | Mock DigiLocker | http://localhost:5001 |
 | Mock Income Dept | http://localhost:5002 |
 

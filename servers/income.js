@@ -30,7 +30,7 @@ tr.row{cursor:pointer} tr.row:hover{background:#f7efdb}
   <p>Revenue &amp; Welfare Records Division · Legacy Silo #2 · System last upgraded: 2009</p>
 </header>
 <div class="wrap">
-  <div class="sim">⚠️ SIMULATION ONLY — Mock legacy system for the setu Interoperability prototype. Records served in legacy XML format.</div>
+  <div class="sim">⚠️ SIMULATION ONLY — Mock legacy system for the SETU Interoperability prototype. Records served in legacy XML format.</div>
   <div class="bar"><strong>Certificate Search:</strong><input id="q" placeholder="Search by name or Aadhaar..." oninput="draw()"><span class="muted" id="count"></span></div>
   <table><thead><tr><th>Certificate No</th><th>Name</th><th>Aadhaar</th><th>Annual Income</th><th>Category</th><th>Issued On</th></tr></thead><tbody id="tb"></tbody></table>
   <div id="detail"></div>

@@ -2,7 +2,7 @@
   "name": "sih-interop-prototype",
   "version": "2.1.0",
   "private": true,
-  "description": "setu Interoperability Hub - SIH 2026 prototype (DigiLocker + Income verification)",
+  "description": "SETU Interoperability Hub - SIH 2026 prototype (DigiLocker + Income verification)",
   "main": "main/server.js",
   "scripts": {
     "start": "concurrently -n DIGI,INCOME,MAIN -c blue,green,yellow \"node servers/digilocker.js\" \"node servers/income.js\" \"node main/server.js\"",

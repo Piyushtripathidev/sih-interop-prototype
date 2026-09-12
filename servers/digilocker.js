@@ -33,7 +33,7 @@ tr.row{cursor:pointer} tr.row:hover{background:#f2f7ff}
   <span class="badge">Data Format: JSON</span>
 </header>
 <div class="wrap">
-  <div class="sim">⚠️ SIMULATION ONLY — This is a mock legacy system for the setu Interoperability prototype. Not connected to real DigiLocker.</div>
+  <div class="sim">⚠️ SIMULATION ONLY — This is a mock legacy system for the SETU Interoperability prototype. Not connected to real DigiLocker.</div>
   <div class="bar"><strong>Search Citizen:</strong><input id="q" placeholder="Search by name or Aadhaar..." oninput="draw()"><span class="muted" id="count"></span></div>
   <table><thead><tr><th>Aadhaar</th><th>Name</th><th>DOB</th><th>Gender</th><th>Caste</th><th>Address</th></tr></thead><tbody id="tb"></tbody></table>
   <div id="detail"></div>

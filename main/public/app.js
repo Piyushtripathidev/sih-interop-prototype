@@ -98,7 +98,7 @@ async function renderServices() {
   const services = await apiFetch("/api/services");
   $("content").innerHTML = `
     <h2>Unified Government Services</h2>
-    <p class="muted">Apply once — setu verifies your data across connected departments automatically.</p>
+    <p class="muted">Apply once — SETU verifies your data across connected departments automatically.</p>
     <div class="service-grid">
       ${services.map((s) => `
         <div class="service-card">
@@ -193,7 +193,7 @@ function resultPanel(a) {
         <tbody>${a.match.breakdown.map((b) => `<tr><td>${esc(b.field)}</td><td>${esc(b.submitted)}</td><td>${esc(b.source)}</td><td>${esc(b.sourceSystem)}</td><td>${b.pts}/${b.max}</td></tr>`).join("")}</tbody></table>` : ""}
       <p style="margin-top:10px"><b>Remarks:</b> ${esc(a.remarks)}</p>
       ${a.consent ? `<p class="muted" style="margin-top:8px">🔐 <b>Consent receipt:</b> ${esc(a.consent.purpose)} · shared with ${a.consent.sharedWith.join(" + ")} · fields: ${a.consent.scope.join(", ")} · ${new Date(a.consent.at).toLocaleString()}</p>` : ""}
-      ${a.finalStatus === "APPROVED" ? `<div class="certificate"><div class="cert-head">🏛️ DIGITAL CERTIFICATE — ${esc(a.serviceName).toUpperCase()}</div><p>Issued to <b>${esc(a.userName)}</b> (Aadhaar ****${esc(String(a.userAadhaar).slice(-4))})</p><p>Verification ID: <b>SAM-${hashCode(a.id + (a.match ? a.match.score : 0))}</b> · Match score: <b>${a.match ? a.match.score : "-"}%</b></p><p class="muted">Digitally verified via setu Match Engine on ${new Date(a.updatedAt).toLocaleString()}</p></div>` : ""}
+      ${a.finalStatus === "APPROVED" ? `<div class="certificate"><div class="cert-head">🏛️ DIGITAL CERTIFICATE — ${esc(a.serviceName).toUpperCase()}</div><p>Issued to <b>${esc(a.userName)}</b> (Aadhaar ****${esc(String(a.userAadhaar).slice(-4))})</p><p>Verification ID: <b>SAM-${hashCode(a.id + (a.match ? a.match.score : 0))}</b> · Match score: <b>${a.match ? a.match.score : "-"}%</b></p><p class="muted">Digitally verified via SETU Match Engine on ${new Date(a.updatedAt).toLocaleString()}</p></div>` : ""}
     </div>`;
 }
 
