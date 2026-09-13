@@ -11,9 +11,9 @@ app.use(express.static(path.join(__dirname, "public")));
 const PORT = process.env.PORT || 5000;
 
 const STAFF = [
-  { staffId: "OFF-101", password: "officer@123", name: "Officer Rao", role: "OFFICIAL", department: "Food & Civil Supplies" },
-  { staffId: "OFF-102", password: "officer@123", name: "Officer Mehta", role: "OFFICIAL", department: "Social Welfare" },
-  { staffId: "ADM-001", password: "admin@123", name: "Admin Rao", role: "ADMIN", department: "Platform Administration" }
+  { staffId: "OFF-101", password: "officer@123", name: "Officer Piyush", role: "OFFICIAL", department: "Food & Civil Supplies" },
+  { staffId: "OFF-102", password: "officer@123", name: "Officer Ayush", role: "OFFICIAL", department: "Social Welfare" },
+  { staffId: "ADM-001", password: "admin@123", name: "Admin Piyush", role: "ADMIN", department: "Platform Administration" }
 ];
 
 const state = { applications: [], events: [], audit: [], notifications: [], exceptions: [], traffic: [] };
