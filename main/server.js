@@ -12,7 +12,9 @@ const PORT = process.env.PORT || 5000;
 
 const STAFF = [
   { staffId: "OFF-101", password: "officer@123", name: "Officer Piyush", role: "OFFICIAL", department: "Food & Civil Supplies" },
-  { staffId: "OFF-102", password: "officer@123", name: "Officer Ayush", role: "OFFICIAL", department: "Social Welfare" },
+  { staffId: "OFF-102", password: "officer@123", name: "Officer Nikhil", role: "OFFICIAL", department: "Social Welfare" },
+  { staffId: "OFF-103", password: "officer@123", name: "Officer suyash", role: "OFFICIAL", department: "Education" },
+  { staffId: "OFF-104", password: "officer@123", name: "Officer swastik", role: "OFFICIAL", department: "Revenue" },
   { staffId: "ADM-001", password: "admin@123", name: "Admin Piyush", role: "ADMIN", department: "Platform Administration" }
 ];
 
@@ -172,8 +174,10 @@ app.post("/api/sso/login", (req, res) => {
   let user;
   if (role === "CITIZEN") {
     if (!/^\d{12}$/.test(aadhaar)) return res.status(400).json({ error: "AADHAAR_MUST_BE_12_DIGITS" });
-    if (!citizens.find((c) => c.aadhaar === aadhaar)) return res.status(404).json({ error: "CITIZEN_NOT_FOUND", message: "This Aadhaar is not in the master citizen registry. Open the DigiLocker portal and copy an exact Aadhaar, or use a demo login button." });
+    if (!citizens.find((c) => c.aadhaar === aadhaar)) return res.status(404).json({ error: "CITIZEN_NOT_IN_REGISTRY" });
     if (!name || name.length < 3) return res.status(400).json({ error: "NAME_REQUIRED" });
+    const rec = citizens.find((c) => c.aadhaar === aadhaar);
+    if (sim(name, rec.name) < 0.6) return res.status(401).json({ error: "IDENTITY_MISMATCH_NAME_DOES_NOT_MATCH_REGISTRY" });
     user = { aadhaar, name, role };
   } else {
     const staff = STAFF.find((s) => s.staffId === String(body.staffId || "").trim() && s.password === String(body.password || ""));

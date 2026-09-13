@@ -50,6 +50,13 @@ async function quickLogin(payload) {
 }
 
 function initLoginEvents() {
+  $("role").addEventListener("change", () => {
+    const staffMode = $("role").value.toUpperCase() !== "CITIZEN";
+    $("name").disabled = staffMode;
+    $("name").value = staffMode ? "" : $("name").value;
+    $("name").placeholder = staffMode ? "Not needed — name comes from staff directory" : "Enter name";
+  });
+
   $("login-form").addEventListener("submit", (e) => {
     e.preventDefault();
     quickLogin({
