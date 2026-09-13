@@ -40,20 +40,19 @@
             <label>Aadhaar (Citizen only)<input id="aadhaar" placeholder="12 digit Aadhaar" maxlength="12" /></label>
             <label>Employee ID (Official/Admin only)<input id="staffId" placeholder="e.g. OFF-101" /></label>
             <label>Password (Official/Admin only)<input id="password" type="password" placeholder="Staff password" /></label>
+            <button type="submit" class="btn primary">Login</button>
           </div>
-          <button type="submit" class="btn primary">Login</button>
         </form>
         <div id="login-error" class="error"></div>
         <div class="quick-login">
           <h4>Demo Logins</h4>
-          <div class="btn-group">
-            <button id="quick-citizen-success" class="btn ghost">Citizen - BPL Record (random)</button>
-            <button id="quick-citizen-reject" class="btn ghost">Citizen - High Income (random)</button>
-            <button id="quick-citizen-review" class="btn ghost">Citizen - Missing Income Record</button>
+                    <div class="btn-group">
+            <button id="quick-citizen-random" class="btn ghost">🎲 Citizen - Random Record</button>
+            <button id="quick-citizen-review" class="btn ghost">⚠️ Citizen - No Income Record</button>
             <button id="quick-official" class="btn ghost">Official Login</button>
             <button id="quick-admin" class="btn ghost">Admin Login</button>
           </div>
-          <p class="muted" style="margin-top:12px">Final outcome also depends on each scheme's rules (age, gender, category).</p>
+          <p class="muted" style="margin-top:12px">Any citizen can apply to any scheme — verification and eligibility rules decide the outcome after consent. That's the engine doing its job.</p>
           <p class="muted" style="margin-top:6px">Staff demo credentials — Official: <b>OFF-101 / officer@123</b> · Admin: <b>ADM-001 / admin@123</b></p>
         </div>
       </div>
