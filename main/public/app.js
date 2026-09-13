@@ -60,9 +60,9 @@ function initLoginEvents() {
       password: $("password").value
     });
   });
-  $("quick-citizen-success").addEventListener("click", () => quickLogin({ role: "CITIZEN", ...demoCitizens.clean }));
-  $("quick-citizen-reject").addEventListener("click", () => quickLogin({ role: "CITIZEN", ...demoCitizens.variation }));
-  $("quick-citizen-review").addEventListener("click", () => quickLogin({ role: "CITIZEN", ...demoCitizens.missingIncome }));
+  $("quick-citizen-success").addEventListener("click", async () => { const d = await (await fetch("/api/demo-citizens")).json(); quickLogin({ role: "CITIZEN", ...d.clean }); });
+  $("quick-citizen-reject").addEventListener("click", async () => { const d = await (await fetch("/api/demo-citizens")).json(); quickLogin({ role: "CITIZEN", ...d.variation }); });
+  $("quick-citizen-review").addEventListener("click", async () => { const d = await (await fetch("/api/demo-citizens")).json(); quickLogin({ role: "CITIZEN", ...d.missingIncome }); });
   $("quick-official").addEventListener("click", () => quickLogin({ role: "OFFICIAL", staffId: "OFF-101", password: "officer@123" }));
   $("quick-admin").addEventListener("click", () => quickLogin({ role: "ADMIN", staffId: "ADM-001", password: "admin@123" }));
 }

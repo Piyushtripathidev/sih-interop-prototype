@@ -157,8 +157,12 @@ function computeMatch(form, digi, income) {
 app.get("/health", (req, res) => res.json({ service: "Main Interoperability Platform", status: "UP" }));
 
 app.get("/api/demo-citizens", (req, res) => {
-  const pick = (i) => ({ aadhaar: citizens[i].aadhaar, name: citizens[i].name });
-  res.json({ clean: pick(0), variation: pick(3), missingIncome: pick(23) });
+  const withIncome = citizens.filter((c) => c.income.exists);
+  const bpl = withIncome.filter((c) => c.income.annualIncome <= 100000);
+  const rich = withIncome.filter((c) => c.income.annualIncome > 250000);
+  const missing = citizens.filter((c) => !c.income.exists);
+  const pick = (arr) => { const c = arr[Math.floor(Math.random() * arr.length)]; return { aadhaar: c.aadhaar, name: c.name }; };
+  res.json({ clean: pick(bpl), variation: pick(rich), missingIncome: pick(missing) });
 });
 
 app.post("/api/sso/login", (req, res) => {

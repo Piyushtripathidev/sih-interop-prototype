@@ -1,89 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SETU Interoperability Hub</title>
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SETU Interoperability Hub</title>
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="topbar">
-    <div class="brand">
-      <div class="brand-logo">🏛️</div>
-      <div>
-        <h1>SETU <span>Interoperability Hub</span></h1>
-        <p>Unified Government Service Delivery · Prototype</p>
-      </div>
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-logo">🏛️</div>
+    <div>
+      <h1>SETU <span>Interoperability Hub</span></h1>
+      <p>Unified Government Service Delivery · Prototype</p>
     </div>
-    <div id="session-info"></div>
-  </header>
-  <div class="tricolor"></div>
+  </div>
+  <div id="session-info"></div>
+</header>
+<div class="tricolor"></div>
 
-  <main class="container">
-    <section id="login-view" class="card login-card">
+<main class="container">
+  <section id="login-view">
+    <div class="card login-card">
       <div class="login-hero">
         <h2>One Nation. One Portal.<br>Every Service.</h2>
         <p>SETU connects fragmented government systems through secure, standards-based interoperability — citizens submit data once, and departments verify it automatically.</p>
         <div class="hero-points">
           <div class="hero-point"><span>🔗</span><div><b>Interoperability Layer</b><br><small>JSON + XML connectors to legacy silos</small></div></div>
           <div class="hero-point"><span>🎯</span><div><b>Smart Verification</b><br><small>Field-level match scoring across departments</small></div></div>
-          <div class="hero-point"><span>🔐</span><div><b>Consent &amp; Audit</b><br><small>Consent-based sharing with a full audit trail</small></div></div>
+          <div class="hero-point"><span>🔐</span><div><b>Consent & Audit</b><br><small>Consent-based sharing with a full audit trail</small></div></div>
         </div>
       </div>
-
       <div class="login-body">
         <h3>Sign in</h3>
-        <form id="login-form" class="form-grid">
-          <label>Role
-            <select id="role">
-              <option value="CITIZEN">Citizen</option>
-              <option value="OFFICIAL">Official</option>
-              <option value="ADMIN">Admin</option>
-            </select>
-          </label>
-          <label>Name
-            <input id="name" type="text" placeholder="Enter name" />
-          </label>
-          <label>Aadhaar (Citizen only)
-            <input id="aadhaar" type="text" placeholder="12 digit Aadhaar" />
-          </label>
-          <label>Employee ID (Official/Admin only)
-            <input id="staffId" type="text" placeholder="e.g. OFF-101" />
-          </label>
-          <label>Password (Official/Admin only)
-            <input id="password" type="password" placeholder="Staff password" />
-          </label>
+        <form id="login-form">
+          <div class="form-grid">
+            <label>Role<select id="role"><option>Citizen</option><option>Official</option><option>Admin</option></select></label>
+            <label>Name<input id="name" placeholder="Enter name" /></label>
+            <label>Aadhaar (Citizen only)<input id="aadhaar" placeholder="12 digit Aadhaar" maxlength="12" /></label>
+            <label>Employee ID (Official/Admin only)<input id="staffId" placeholder="e.g. OFF-101" /></label>
+            <label>Password (Official/Admin only)<input id="password" type="password" placeholder="Staff password" /></label>
+          </div>
           <button type="submit" class="btn primary">Login</button>
         </form>
-
         <div id="login-error" class="error"></div>
-
         <div class="quick-login">
           <h4>Demo Logins</h4>
           <div class="btn-group">
-            <button id="quick-citizen-success" class="btn">Citizen - Auto Approve</button>
-            <button id="quick-citizen-reject" class="btn">Citizen - Income Reject</button>
-            <button id="quick-citizen-review" class="btn">Citizen - Missing Income Record</button>
-            <button id="quick-official" class="btn">Official Login</button>
-            <button id="quick-admin" class="btn">Admin Login</button>
+            <button id="quick-citizen-success" class="btn ghost">Citizen - BPL Record (random)</button>
+            <button id="quick-citizen-reject" class="btn ghost">Citizen - High Income (random)</button>
+            <button id="quick-citizen-review" class="btn ghost">Citizen - Missing Income Record</button>
+            <button id="quick-official" class="btn ghost">Official Login</button>
+            <button id="quick-admin" class="btn ghost">Admin Login</button>
           </div>
-          <p class="muted" style="margin-top:12px">
-            Staff demo credentials — Official: <b>OFF-101 / officer@123</b> · Admin: <b>ADM-001 / admin@123</b>
-          </p>
+          <p class="muted" style="margin-top:12px">Final outcome also depends on each scheme's rules (age, gender, category).</p>
+          <p class="muted" style="margin-top:6px">Staff demo credentials — Official: <b>OFF-101 / officer@123</b> · Admin: <b>ADM-001 / admin@123</b></p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="app-view" class="hidden">
-      <nav id="tabs" class="tabs"></nav>
-      <div id="content" class="card"></div>
-    </section>
-  </main>
+  <section id="app-view" class="hidden">
+    <nav id="tabs" class="tabs"></nav>
+    <div id="content" class="card"></div>
+  </section>
+</main>
 
-  <footer class="footer">
-    Prototype built for Smart India Hackathon · All systems simulated · Not a real government portal
-  </footer>
+<footer class="footer">
+  Prototype built for Smart India Hackathon · All systems simulated · Not a real government portal
+</footer>
 
-  <script src="app.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
