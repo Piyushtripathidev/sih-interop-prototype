@@ -11,7 +11,7 @@
 ![Status](https://img.shields.io/badge/Status-Prototype-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-**🌐 Live Demo:** "(https://setu-hub.onrender.com)"
+**🌐 Live Demo:** <https://setu-hub.onrender.com>
 **📱 Mobile-ready:** fully responsive; open the live URL on any phone.
 
 ---
@@ -203,32 +203,34 @@ node allinone.js
 
 | Role | Credentials |
 |---|---|
-| Official | `OFF-101` / `officer@123` · `OFF-002` style: `OFF-102` / `officer@123` |
-| Admin | `ADM-001` / `admin@123` |
-| Citizen | Any of the 50 registry citizens (demo buttons provided) |
+| Official | `OFF-101` / `officer@123` (Officer Piyush) · `OFF-102` / `officer@123` (Officer Ayush) |
+| Admin | `ADM-001` / `admin@123` (Admin Piyush) |
+| Citizen | Any of the 50 registry citizens via the demo buttons |
 
-**Citizen demo personas:**
+**Citizen demo buttons (login page):**
 
-| Persona | Aadhaar | Demonstrates |
+| Button | What it does |
+|---|---|
+| 🎲 Citizen - Random Record | Logs in as a random citizen with a complete record — the Match Engine + scheme rules decide the outcome live |
+| ⚠️ Citizen - No Income Record | Logs in as the one citizen missing from the Income Department → demonstrates graceful connector-exception handling |
+
+**Guaranteed-outcome cheat-sheet (works with any random citizen):**
+
+| Want to show | Apply to | Why it's guaranteed |
 |---|---|---|
-| Aarav Sharma (senior, BPL, GENERAL) | `200000100000` | 100% match → auto-approval + digital certificate |
-| Ananya Iyer (₹11.5 L income) | via "Income Reject" button | Verified but **ineligible** → rule-based rejection |
-| Shalini Iyer | `202300282137` | Missing legacy income record → connector exception |
-| Rahul Kumar (age ~20) | `200800163352` | Scholarship auto-approval |
-| Divya Das (SC) | `200900171271` | Caste certificate approval (claim matches civil record) |
-| Any GENERAL citizen claiming SC | — | False claim blocked by cross-department matching |
-
----
+| ✅ APPROVED + digital certificate | Domicile Certificate or Income Certificate | Eligibility = identity verification only |
+| ❌ REJECTED despite 100% match | Caste Certificate (if caste shows GENERAL) or Post-Matric Scholarship (if age > 25) | Scheme rulebook blocks it — verification ≠ eligibility |
+| 🟡 Partial match → manual review | Any scheme, using "Auto-fill with mismatches" | Score drops into the 60–84 review band |
+| 💥 Connector exception | Any scheme, via the ⚠️ No Income Record login | Income Dept has no record for that Aadhaar |
 
 ## 🎬 5-Minute Demo Walkthrough
 
-1. **Citizen login** → apply for Ration Card → consent → *auto-fill exact* → **APPROVED (100%)** with field-by-field breakdown, consent receipt & digital certificate.
-2. Same citizen → *auto-fill with mismatches* → score drops to 60–84% → **PENDING_REVIEW**.
-3. **Official login** (`OFF-101`) → review queue → inspect evidence → **Approve** → citizen sees **live toast notification** instantly.
-4. **Shalini Iyer** applies → Income Dept has no record → **graceful connector exception** + admin alert.
-5. **Admin login** (`ADM-001`) → Monitoring: totals, avg match score, avg processing time, connector health, **live connector traffic**, exceptions → **Audit Logs**.
-
----
+1. **Citizen:** 🎲 Random Record login → apply for **Domicile Certificate** → consent → auto-fill exact → **APPROVED (100%)** with field-by-field breakdown, consent receipt & digital certificate.
+2. Same citizen → **Caste Certificate** (if GENERAL) or **Post-Matric Scholarship** (if age > 25) → 100% identity match but **REJECTED by eligibility rules** — verification ≠ eligibility.
+3. Same citizen → **Auto-fill with mismatches** on any scheme → score drops to 60–84% → **PENDING_REVIEW**.
+4. **Official login** (`OFF-101`) → review queue → inspect field-level evidence → **Approve** → citizen sees a **live toast notification** instantly.
+5. **⚠️ No Income Record** citizen applies → Income Dept returns nothing → **graceful connector exception** logged and citizen notified.
+6. **Admin login** (`ADM-001`) → Monitoring: totals, avg match score, avg processing time, connector health, **live connector traffic**, exceptions → **Audit Logs**.
 
 ## 🔌 Core API Reference
 
