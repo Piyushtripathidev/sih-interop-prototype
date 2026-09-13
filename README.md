@@ -117,13 +117,14 @@ Legacy systems are **never replaced** — they are simply connected.
 | 🎓 Post-Matric Scholarship | Education | Age 15–25 and income ≤ ₹2,50,000 |
 | 🏠 PM Awas Yojana | Housing | BPL or income ≤ ₹1,20,000 |
 | 👵 Old Age Pension | Social Welfare | Age ≥ 60 and income ≤ ₹1,00,000 |
-| 📜 Income Certificate | Revenue | Identity verification only |
+| 📜 Income Certificate (Digital Re-issue) | Revenue | Re-issues a digitally verifiable income certificate from the citizen's existing Revenue Department record — identity verification only |
 | 🪪 Caste Certificate (SC/OBC/ST) | Revenue | Reserved category **and** claimed caste matches DigiLocker civil record |
 | 📍 Domicile Certificate | Revenue | Identity + address verification |
 | 🏥 Ayushman Bharat (PM-JAY) | Health | BPL category |
 | 🔥 PM Ujjwala Yojana | Petroleum & Gas | Female, age ≥ 18, BPL |
 | 🛠️ e-Shram Labour Card | Labour | Age 18–59 and income ≤ ₹2,40,000 |
 
+**Note on Income Certificate:** In SETU, the Income Department represents the state's existing Revenue Department record system. The Income Certificate service is therefore modelled as a **digital re-issue** from an already verified record, not as circular self-verification.
 ---
 
 ## 🛠️ Tech Stack
@@ -203,8 +204,11 @@ node allinone.js
 
 | Role | Credentials |
 |---|---|
-| Official | `OFF-101` / `officer@123` (Officer Piyush) · `OFF-102` / `officer@123` (Officer Ayush) |
-| Admin | `ADM-001` / `admin@123` (Admin Piyush) |
+| Official | `OFF-101` / `officer@123` — Officer Piyush (Food & Civil Supplies) |
+| Official | `OFF-102` / `officer@123` — Officer Nikhil (Social Welfare) |
+| Official | `OFF-103` / `officer@123` — Officer Suyash (Education) |
+| Official | `OFF-104` / `officer@123` — Officer Swastik (Revenue) |
+| Admin | `ADM-001` / `admin@123` — Admin Piyush (Platform Administration) |
 | Citizen | Any of the 50 registry citizens via the demo buttons |
 
 **Citizen demo buttons (login page):**
@@ -214,11 +218,16 @@ node allinone.js
 | 🎲 Citizen - Random Record | Logs in as a random citizen with a complete record — the Match Engine + scheme rules decide the outcome live |
 | ⚠️ Citizen - No Income Record | Logs in as the one citizen missing from the Income Department → demonstrates graceful connector-exception handling |
 
+**Login integrity rules:**
+- **Citizens:** the entered name must fuzzy-match (≥ 60%) the registry name for that Aadhaar — mixed identities (one person's number + another's name) are blocked at the gate with `IDENTITY_MISMATCH_NAME_DOES_NOT_MATCH_REGISTRY`.
+
+- **Officials / Admins:** the Name field is disabled by design — identity = staff ID + password, and the displayed name always comes from the staff directory, so staff name-spoofing is impossible.
+
 **Guaranteed-outcome cheat-sheet (works with any random citizen):**
 
 | Want to show | Apply to | Why it's guaranteed |
 |---|---|---|
-| ✅ APPROVED + digital certificate | Domicile Certificate or Income Certificate | Eligibility = identity verification only |
+| ✅ APPROVED + digital certificate | Domicile Certificate or Income Certificate (Digital Re-issue) | Eligibility = identity verification + existing Revenue record |
 | ❌ REJECTED despite 100% match | Caste Certificate (if caste shows GENERAL) or Post-Matric Scholarship (if age > 25) | Scheme rulebook blocks it — verification ≠ eligibility |
 | 🟡 Partial match → manual review | Any scheme, using "Auto-fill with mismatches" | Score drops into the 60–84 review band |
 | 💥 Connector exception | Any scheme, via the ⚠️ No Income Record login | Income Dept has no record for that Aadhaar |

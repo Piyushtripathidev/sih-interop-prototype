@@ -13,8 +13,8 @@ const PORT = process.env.PORT || 5000;
 const STAFF = [
   { staffId: "OFF-101", password: "officer@123", name: "Officer Piyush", role: "OFFICIAL", department: "Food & Civil Supplies" },
   { staffId: "OFF-102", password: "officer@123", name: "Officer Nikhil", role: "OFFICIAL", department: "Social Welfare" },
-  { staffId: "OFF-103", password: "officer@123", name: "Officer suyash", role: "OFFICIAL", department: "Education" },
-  { staffId: "OFF-104", password: "officer@123", name: "Officer swastik", role: "OFFICIAL", department: "Revenue" },
+  { staffId: "OFF-103", password: "officer@123", name: "Officer Suyash", role: "OFFICIAL", department: "Education" },
+  { staffId: "OFF-104", password: "officer@123", name: "Officer Swastik", role: "OFFICIAL", department: "Revenue" },
   { staffId: "ADM-001", password: "admin@123", name: "Admin Piyush", role: "ADMIN", department: "Platform Administration" }
 ];
 
@@ -28,7 +28,7 @@ const services = [
   { code: "SCHOLARSHIP", name: "Post-Matric Scholarship", icon: "🎓", department: "Education Department", description: "Scholarship for students above Class 10.", eligibilityText: "Age 15-25 and income <= Rs 2,50,000", eligibility: (inc, age) => age >= 15 && age <= 25 && inc.annualIncome <= 250000 },
   { code: "PM_AWAS", name: "PM Awas Yojana", icon: "🏠", department: "Ministry of Housing", description: "Housing support for urban and rural poor.", eligibilityText: "BPL or income <= Rs 1,20,000", eligibility: (inc, age) => inc.category === "BPL" || inc.annualIncome <= 120000 },
   { code: "OLD_AGE_PENSION", name: "Old Age Pension", icon: "👵", department: "Social Welfare", description: "Monthly pension for senior citizens.", eligibilityText: "Age >= 60 and income <= Rs 1,00,000", eligibility: (inc, age) => age >= 60 && inc.annualIncome <= 100000 },
-  { code: "INCOME_CERT", name: "Income Certificate", icon: "📜", department: "Revenue Department", description: "Official certificate of annual income.", eligibilityText: "Identity verification only", eligibility: () => true },
+  { code: "INCOME_CERT", name: "Income Certificate (Digital Re-issue)", icon: "📜", department: "Revenue Department", description: "Re-issues a digitally verifiable Income Certificate from the citizen's existing Revenue Department record — no paperwork, no re-submission.", eligibilityText: "Identity verification + existing record in Revenue Department", eligibility: () => true },
   { code: "CASTE_CERT", name: "Caste Certificate (SC/OBC/ST)", icon: "🪪", department: "Revenue Department", description: "Issued only to reserved categories; claimed caste cross-verified against DigiLocker civil record.", eligibilityText: "SC/OBC/ST as per DigiLocker record, and claim must match", eligibility: (inc, age, form, digi) => form.caste === digi.caste && digi.caste !== "GENERAL" },
   { code: "DOMICILE_CERT", name: "Domicile Certificate", icon: "📍", department: "Revenue Department", description: "Proof of residence for state scheme eligibility.", eligibilityText: "Identity + address verification only", eligibility: () => true },
   { code: "PM_JAY", name: "Ayushman Bharat (PM-JAY) Card", icon: "🏥", department: "Health & Family Welfare", description: "Rs 5 lakh health cover per eligible household.", eligibilityText: "BPL category", eligibility: (inc, age) => inc.category === "BPL" },
